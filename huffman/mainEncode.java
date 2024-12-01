@@ -9,10 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-/**
- *
- * @author Mamun
- */
 public class mainEncode {
 
     public boolean exist = false;
@@ -47,7 +43,7 @@ public class mainEncode {
                 new Command().command();
             }
         } catch (Exception e) {
-            //   System.out.println("Invalid filename");
+
 
         }
 
@@ -75,7 +71,7 @@ public class mainEncode {
 
             if (!compressFileName.endsWith(".zip") | compressFileName.isEmpty()  ) {
                 System.out.println("\tInvalid filename");
-                //   compressFile(p);
+
                 new Command().command();
 
             } 
@@ -90,18 +86,12 @@ public class mainEncode {
         }
         if (exist) {
             System.out.println("\tSame file already exist in this location ");
-            //System.out.println(p);
+
             new Command().command();
         }
         return compressfilePath;
     }
 
-    /*public void exit() throws IOException {
-        if (sc.next().equals("break")) {
-      new Command().command();
-        }
-    }
-     */
     public boolean checkFileExist(String path) throws IOException {
         try {
             Path p = Paths.get(path);
@@ -117,7 +107,7 @@ public class mainEncode {
         } catch (Exception e) {
             System.out.println("\tInvalid filename");
             new Command().command();
-            // exist=false;
+
 
         }
         return exist;
