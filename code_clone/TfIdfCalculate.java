@@ -34,17 +34,17 @@ public class TfIdfCalculate {
                 while ((s = in.readLine()) != null) {
                     sb.append(s);
                 }
-                // System.out.println("sb=" + sb);
+
                 if (path.equals(CloneCheck.path1)) {
-                 //  System.out.println("="+path);
+
                     FileWordProject1.add(sb.toString().trim().split(" "));
 
                 }
                 if (path.equals(CloneCheck.path2)) {
-                  //  System.out.println("2="+path);
+
                     FileWordProject2.add(sb.toString().trim().split(" "));
                 }
-               // System.out.println("" + sb1);
+
                 sb1.append(" ").append(sb);
                 processProjectFile.add(sb.toString().trim());//contains two project file one by one 
             }
@@ -59,7 +59,7 @@ public class TfIdfCalculate {
 
         for (String term : allterm) {
             if (!allterms1.contains(term)) {
-                allterms1.add(term); //project1 unique word
+                allterms1.add(term);
             }
         }
 
@@ -132,15 +132,15 @@ public class TfIdfCalculate {
                 tf = new getTfIdf().getTf(fileword, term);
                 if (idfmap.containsKey(term)) {
                     idf = idfmap.get(term);
-                    //   System.out.println(term+" "+idf);
+
                 } else {
                     idf = 0;
                 }
                 tfidf = tf * idf;
-                // System.out.println(term+" 2="+tfidf);
+
                 tfidfvector[count] = tfidf;
                 count++;
-                //  System.out.println(term+" tfidf="+tfidf);
+
             }
             tfidfvectorProject2.add(tfidfvector);
             

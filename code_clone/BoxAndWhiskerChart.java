@@ -27,10 +27,9 @@ public class BoxAndWhiskerChart {
         ArrayList<Double> list = new ArrayList<>();
         for (int j = 0; j < l.length; j++) {
             double d = l[j];
-            //    System.out.println("k=="+l[j]);
             list.add(l[j]);
 
-        }//System.out.println("");
+        }
         return list;
     }
 
@@ -62,7 +61,6 @@ public class BoxAndWhiskerChart {
         );
         final ChartPanel chartPanel = new ChartPanel(chart);
         chart.setBackgroundPaint(Color.LIGHT_GRAY);
-        //   JFreeChart chart = new JFreeChart("Test", JFreeChart.DEFAULT_TITLE_FONT, plot, true);
         f.add(new ChartPanel(chart) {
             @Override
             public Dimension getPreferredSize() {

@@ -120,7 +120,7 @@ public class Porter_stemmer {
                 "enci",
                 "anci",
                 "izer",
-                "bli", // the published algorithm specifies abli instead of bli.
+                "bli",
                 "alli",
                 "entli",
                 "eli",
@@ -158,10 +158,9 @@ public class Porter_stemmer {
                 "al",
                 "ive",
                 "ble",
-                "log" // the published algorithm doesn't contain this
+                "log"
         };
-        // (m>0) ATIONAL ->  ATE
-        // (m>0) TIONAL  ->  TION
+
         for (int i = 0; i < s1.length; i++) {
             if (input.endsWith(s1[i])) {
                 String stem = input.substring(0, input.length() - s1[i].length());
@@ -193,8 +192,7 @@ public class Porter_stemmer {
                 "",
                 "",
         };
-        // (m>0) ICATE ->  IC
-        // (m>0) ATIVE ->
+
         for (int i = 0; i < s1.length; i++) {
             if (input.endsWith(s1[i])) {
                 String stem = input.substring(0, input.length() - s1[i].length());
@@ -257,11 +255,11 @@ public class Porter_stemmer {
             String stem = input.substring(0, input.length() - 1);
             String letterTypes = getLetterTypes(stem);
             int m = getM(letterTypes);
-            // (m>1) E     ->
+
             if (m > 1) {
                 return stem;
             }
-            // (m=1 and not *o) E ->
+
             if (m == 1 && !isStarO(stem)) {
                 return stem;
             }
@@ -270,7 +268,7 @@ public class Porter_stemmer {
     }
 
     String stemStep5b(String input) {
-        // (m > 1 and *d and *L) -> single letter
+
         String letterTypes = getLetterTypes(input);
         int m = getM(letterTypes);
         if (m > 1 && input.endsWith("ll")) {

@@ -26,8 +26,7 @@ public class Command {
     public static String forwardDir;
     String directoryName = null;
     public static String currentPath = null;
-    //  boolean pexist = false;
-    //String project;
+
 
     Scanner scan = new Scanner(System.in);
 
@@ -102,9 +101,8 @@ public class Command {
                 String result;
 
                 String newPath = currentPath;
-                // System.out.println("newpath=" + newPath);
+
                 result = backDirectory(newPath);
-                //   }
             } else if (Pattern.matches("(?i)\\bcd\\b\\s*\\\\", choice)) {
                 currentPath = currentPath.substring(0, 3);
 
@@ -159,7 +157,7 @@ public class Command {
             String projectPath = newpath + "\\" + name;
             Path filepath = Paths.get(projectPath);
             if (Files.exists(filepath) && Files.isDirectory(filepath) && !name.isEmpty()) {
-              //  System.out.println("project");
+
              new MethodCount().getTotalMethods(projectPath, name);
             } else if (Files.exists(filepath) && !Files.isDirectory(filepath) && !name.isEmpty()) {
                 String file = filepath.toString();
@@ -177,7 +175,7 @@ public class Command {
     }
 
     public void LineCode(String Currentpath) throws IOException {
-        String newpath = pathGenerate(Currentpath);    //count total number of line of a java file
+        String newpath = pathGenerate(Currentpath);
         System.out.print("\tWrite the file name:");
        String fileName=Input();
         String p = newpath + "\\" + fileName.trim();
@@ -203,7 +201,7 @@ public class Command {
 
     }
 
-    public void getTotalClass(String currenctpath) {    //Count total number of class of a projct
+    public void getTotalClass(String currenctpath) {
         String newpath = pathGenerate(currenctpath);
         System.out.print("\tWrite Project name:");
         String projectName = Input();
@@ -253,7 +251,7 @@ public class Command {
             String query = queryWithFile.substring(queryWithFile.indexOf("\"") + 1, queryWithFile.lastIndexOf("\"")).trim();
             String projectName = queryWithFile.substring(queryWithFile.lastIndexOf("\"") + 1).trim();
             String p = newpath + "\\" + projectName;
-            // System.out.println(p);
+
             Path filepath = Paths.get(p);
             if ((projectName.isEmpty() && !query.isEmpty()) || (query.isEmpty() && !projectName.isEmpty())) {
                 System.out.println("Wrong Command");
@@ -269,30 +267,19 @@ public class Command {
                 }
             
             }
-        /*    else {
-                if (Files.exists(filepath) && Files.isDirectory(filepath)) {
-                    SearchResult(newpath, projectName, query);
-                } else if (Files.exists(filepath) && !Files.isDirectory(filepath)) {
-                    SearchResult(newpath, projectName, query);
-                } 
-                else {
-                    System.out.println("The program cannot find '" + projectName + "'");
-                }
-            }*/
+
 
         } catch (Exception e) {
             
           System.out.println("Wrong Command");
-        }//catch (Exception e) {
-        //   e.printStackTrace();
-        // }
+        }
 
     }
 
     public void SearchResult(String path, String projectName, String query) throws IOException {
         String projectPath = path + "\\" + projectName;
         new Search().processProject(projectPath, projectName);
-        new Search().SearchingResult(query, projectPath);  //calculate similarity
+        new Search().SearchingResult(query, projectPath);
 
     }
 
@@ -312,8 +299,7 @@ public class Command {
         System.out.print("\t\tFirst Project:");
        try{
         String Firstproject =Input();
-            //  String FirstprojectPath = currentPath + "\\" + Firstproject;
-          //   File project1=new File(FirstprojectPath);
+
         if (Firstproject.length() == 0 | Firstproject.contains(".")) {
             System.out.println("\tInvalid project name");
             command();
@@ -323,8 +309,7 @@ public class Command {
         System.out.print("\t\tSecond Project:");
 
         String SecondProject = Input();
-      //   String SecondprojectPath = currentPath + "\\" + SecondProject;
-            // File project2=new File(SecondprojectPath);
+
         if (SecondProject.length() == 0 | SecondProject.contains(".")) {
             System.out.println("\tInvalid project name");
             command();
@@ -364,7 +349,7 @@ public class Command {
             }      
             else {
                 System.out.println("The program cannot find project '" + projectName + "'");
-                //   exist=false;
+
                 command();
 
             }
@@ -377,7 +362,7 @@ public class Command {
 
     public String backDirectory(String newpath) {
         String result = null;
-        if (newpath.length() > 3) {    //show stringIndexoutofboundException
+        if (newpath.length() > 3) {
             result = newpath.substring(0, newpath.lastIndexOf("\\") + 1);
             if (result.endsWith("\\") && result.length() > 3) {
                 result = result.substring(0, result.length() - 1);
@@ -422,7 +407,7 @@ public class Command {
                 } else {
                     currentPath = setDirectory(forwardDir).toString();
                 }
-                // System.out.println(currentPath);
+
                 forwardDir = currentPath;
 
             } else {
@@ -438,7 +423,7 @@ public class Command {
     public File setDirectory(String s) {
         File file = new File("");
         System.setProperty("user.dir", "\\" + s);
-        // System.out.println("" + file.getAbsolutePath());
+
 
         return file.getAbsoluteFile();
     }

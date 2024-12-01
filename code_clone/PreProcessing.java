@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PreProcessing {
-    //  String stemWord="";
+
 
     public String ProcessFile(String filename, String content,String p) throws IOException {
         String stemWord = "";
@@ -32,10 +32,9 @@ public class PreProcessing {
 
     public String removePunctuation(String p) throws IOException {
 
-        //    for (int i = 0; i < method.size(); i++) {
-        //   System.out.println(""+method.get(i));
+
         String methodWithoutPunctuation = p.replaceAll("\\p{Punct}", " ");
-        // System.out.println("" + removeMultipleSpaceAndLine(methodWithoutPunctuation));
+
         return methodWithoutPunctuation;
     }
 
